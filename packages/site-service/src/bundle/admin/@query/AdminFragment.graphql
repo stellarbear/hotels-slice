@@ -1,0 +1,9 @@
+fragment AAdminFragment on adminType
+{
+    id
+    name
+    lastLogin
+    permissions
+    role
+    percent
+}

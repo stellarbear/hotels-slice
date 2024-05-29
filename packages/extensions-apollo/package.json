@@ -1,0 +1,35 @@
+{
+    "name": "@app/extensions-apollo",
+    "version": "0.1.0",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist/"
+    ],
+    "description": "UI",
+    "scripts": {
+        "clean": "yarn build:clean",
+        "watch": "yarn build:watch",
+        "build": "yarn build:clean && tsc",
+        "build:clean": "rimraf dist tsconfig.tsbuildinfo",
+        "build:watch": "yarn build --watch"
+    },
+    "private": true,
+    "sideEffects": false,
+    "license": "MIT",
+    "dependencies": {
+        "@apollo/client": "^3.7.14",
+        "graphql": "^16.5.0",
+        "graphql-tag": "^2.12.6",
+        "graphql-ws": "^5.10.1",
+        "isomorphic-fetch": "^3.0.0",
+        "react": "^18.2.0",
+        "subscriptions-transport-ws": "^0.11.0"
+    },
+    "devDependencies": {
+        "@types/isomorphic-fetch": "^0.0.36",
+        "@types/react": "^18.0.17",
+        "@types/styled-components": "^5.1.26",
+        "styled-components": "^5.3.5"
+    }
+}

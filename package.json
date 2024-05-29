@@ -1,0 +1,36 @@
+{
+    "name": "site",
+    "version": "0.3.0",
+    "workspaces": [
+        "packages/*"
+    ],
+    "scripts": {
+        "clean": "lerna run clean",
+        "lint": "eslint 'packages/*/{src,test}/**/*.{ts,tsx}'",
+        "postbuild": "lerna run postbuild",
+        "postbuild:dev": "lerna run postbuild",
+        "watch": "tsc -b packages -w",
+        "watch:apollo": "bin/run-schema",
+        "emit": "bin/run-ui emit",
+        "build:ui": "bin/run-ui build",
+        "watch:ui": "bin/run-ui watch:local"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^17.1.1",
+        "@commitlint/config-conventional": "^17.1.0",
+        "@graphql-codegen/cli": "^3.0.0",
+        "@graphql-codegen/client-preset": "^2.0.0",
+        "@graphql-codegen/typescript": "^3.0.0",
+        "@graphql-codegen/typescript-operations": "^3.0.0",
+        "@types/node": "^18.7.13",
+        "@typescript-eslint/eslint-plugin": "^5.35.1",
+        "@typescript-eslint/parser": "^5.35.1",
+        "eslint": "^8.23.0",
+        "eslint-plugin-import": "2.27.5",
+        "eslint-plugin-react": "^7.31.1",
+        "lerna": "^5.4.2",
+        "typescript": "^5.0.4"
+    },
+    "private": true,
+    "license": "MIT"
+}

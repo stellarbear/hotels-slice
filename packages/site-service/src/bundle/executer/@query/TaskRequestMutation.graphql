@@ -1,0 +1,9 @@
+#import "./TaskFragment.graphql"
+
+mutation TaskRequestMutation($input: inputId!) {
+    executerTaskRequest(input: $input) {
+        task {
+            ...ETaskFragment
+        }
+    }
+}

@@ -1,0 +1,3 @@
+HOST_FS=api.dev..ru/my-bucket-hotel
+HOST_GRAPHQL=api.dev..ru
+HOST_DOMAIN=localhost:8020

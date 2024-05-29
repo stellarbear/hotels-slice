@@ -1,0 +1,9 @@
+#import "./TaskFragment.graphql"
+
+mutation TaskCancelMutation($task: ID!) {
+    executerRequestTaskDelete(task: $task) {
+        task {
+            ...ETaskFragment
+        }
+    }
+}

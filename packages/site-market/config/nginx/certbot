@@ -1,0 +1,13 @@
+certbot -i nginx --cert-name .ru \
+ -d .ru \
+ -d a..ru \
+ -d b..ru \
+ -d s..ru \
+ -d dev..ru \
+ -d a.dev..ru \
+ -d b.dev..ru \
+ -d s.dev..ru \
+ -d stage..ru \
+ -d a.stage..ru \
+ -d b.stage..ru \
+ -d s.stage..ru

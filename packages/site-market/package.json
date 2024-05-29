@@ -1,0 +1,41 @@
+{
+    "name": "@app/site-market",
+    "version": "0.1.0",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist/"
+    ],
+    "description": "UI",
+    "scripts": {
+        "emit": "tsc --noEmit --pretty",
+        "clean": "yarn build:clean",
+        "watch": "yarn build:watch",
+        "build": "node ../esbuild/dist/bin/pack.js",
+        "build:dev": "yarn build --dev",
+        "build:local": "yarn build:dev",
+        "build:clean": "rimraf tsconfig.tsbuildinfo dist/**/*",
+        "watch:local": "yarn build:local --serve -w",
+        "watch:dev": "yarn build:dev -w"
+    },
+    "private": true,
+    "license": "MIT",
+    "dependencies": {
+        "@apollo/client": "^3.7.14",
+        "graphql": "^16.5.0",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-router": "^6.3.0",
+        "react-router-dom": "^6.3.0",
+        "zustand": "^4.1.1"
+    },
+    "devDependencies": {
+        "@types/node": "^18.7.13",
+        "@types/react": "^18.0.17",
+        "@types/react-dom": "^18.0.6",
+        "@types/react-router": "^5.1.18",
+        "@types/react-router-dom": "^5.3.3",
+        "@types/styled-components": "^5.1.26",
+        "styled-components": "^5.3.5"
+    }
+}

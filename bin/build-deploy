@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -x
+command -v source || exit 1
+source bin/build-env
+
+ENV_FILE=.env.hoc
+cat ${!CI_COMMIT_REF_NAME} <(echo) ${!CI_EXTENDS} > ${ENV_FILE}
+
+dc() {
+  docker-compose \
+    --env-file="${ENV_FILE}" \
+    -p "${DEPLOY_ID}" \
+    -f "${PWD}/packages/${PROJECT_NAME}/config/docker/docker-compose.yml" "$@"
+}
+
+dc pull && dc up -d --remove-orphans && dc ps || exit 1

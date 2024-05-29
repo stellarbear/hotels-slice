@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -x
+command -v source || exit 1
+source bin/build-env
+
+docker push "${IMAGE_ROUTER}" &&
+  docker push "${IMAGE_UI}"

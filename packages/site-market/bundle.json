@@ -1,0 +1,74 @@
+{
+    "shared": {
+        "variables": {
+            "NODE_ENV": "development"
+        },
+        "environment": [
+            "HOST_FS",
+            "HOST_DOMAIN",
+            "HOST_GRAPHQL"
+        ]
+    },
+    "bundle": [
+        {
+            "platform": "browser",
+            "build": "dist/admin",
+            "base": "src/bundle/admin",
+            "entry": [
+                "index.html"
+            ],
+            "environment": [],
+            "serve": {
+                "host": "a.localhost",
+                "port": 9020
+            }
+        },
+        {
+            "platform": "browser",
+            "build": "dist/seller",
+            "base": "src/bundle/seller",
+            "entry": [
+                "index.html"
+            ],
+            "environment": [
+                "DADATA_KEY"
+            ],
+            "serve": {
+                "host": "s.localhost",
+                "port": 9020
+            }
+        },
+        {
+            "platform": "browser",
+            "build": "dist/buyer",
+            "base": "src/bundle/buyer",
+            "entry": [
+                "index.html"
+            ],
+            "environment": [
+                "DADATA_KEY"
+            ],
+            "serve": {
+                "host": "b.localhost",
+                "port": 9020
+            }
+        },
+        {
+            "platform": "browser",
+            "build": "dist/landing",
+            "base": "src/bundle/landing",
+            "entry": [
+                "index.html"
+            ],
+            "environment": [
+                "BRANCH",
+                "VERSION",
+                "BUILT_TIME"
+            ],
+            "serve": {
+                "host": "localhost",
+                "port": 9020
+            }
+        }
+    ]
+}

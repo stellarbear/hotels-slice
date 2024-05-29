@@ -1,0 +1,44 @@
+{
+    "shared": {
+        "variables": {
+            "NODE_ENV": "development"
+        },
+        "environment": [
+            "BRANCH",
+            "VERSION",
+            "BUILT_TIME",
+
+            "HOST_REACH",
+            "MAP_YANDEX_KEY",
+            "METRICS_YANDEX"
+        ]
+    },
+    "bundle": [
+        {
+            "platform": "browser",
+            "build": "dist/landing",
+            "base": "src/bundle/landing",
+            "entry": [
+                "index.html"
+            ],
+            "environment": [],
+            "static": [
+                ["@static/robots.txt", "robots.txt"],
+                ["@static/user_agreement.html", "user_agreement.html"]
+            ],
+            "serve": {
+                "host": "localhost",
+                "port": 7020
+            }
+        },
+        {
+            "platform": "node",
+            "build": "dist/ssr",
+            "base": "src/bundle/ssr",
+            "entry": [
+                "index.tsx"
+            ],
+            "environment": []
+        }
+    ]
+}

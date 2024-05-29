@@ -1,0 +1,12 @@
+#import "./AdminFragment.graphql"
+
+query AdminAllQuery($offset: Int, $first: Int) {
+    adminAllAdmins(first: $first, offset: $offset) {
+        totalCount
+        edges {
+            node {
+                ...AAdminFragment
+            }
+        }
+    }
+}

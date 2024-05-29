@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -x
+command -v source || exit 1
+source bin/build-env
+
+CONTEXT_PATH="config/stage"
+PROJECT_PATH="packages/${PROJECT_NAME}"
+dir -d "${PWD}/${PROJECT_PATH}" || exit 1
+
+docker build --rm -t "${IMAGE_ROUTER}" \
+    --build-arg PROJECT_PATH="${PROJECT_PATH}" \
+    --build-arg CONTEXT_PATH="${CONTEXT_PATH}" \
+    -f "${PWD}/${CONTEXT_PATH}/Dockerfile" .

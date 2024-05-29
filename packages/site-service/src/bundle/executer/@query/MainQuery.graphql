@@ -1,0 +1,17 @@
+#import "./ExecuterFragment.graphql"
+#import "./ProfessionFragment.graphql"
+
+query MainQuery {
+    executerMe {
+        ...EExecuterFragment
+
+        favoriteHotels
+        rating
+    }
+
+    professions {
+        ...EProfessionFragment
+    }
+
+    getCountUnreadNotifications
+}

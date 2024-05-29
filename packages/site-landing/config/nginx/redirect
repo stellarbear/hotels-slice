@@ -1,0 +1,24 @@
+server {
+    server_name .com;
+
+    listen 80;
+    listen 443 ssl;
+    ssl_certificate /etc/letsencrypt/live/.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/.com/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+    return 301 https://.ru$request_uri;
+}
+server {
+    server_name ~^(?<name>\w+)\.\.com$;
+
+    listen 80;
+    listen 443 ssl;
+    ssl_certificate /etc/letsencrypt/live/.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/.com/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+    return 301 https://$name..ru$request_uri;
+}

@@ -1,0 +1,17 @@
+include:
+  - local: '/packages/site-service/config/gitlab/pipeline.yml'
+    rules:
+      - if: $CI_COMMIT_BRANCH =~ /^service/
+  - local: '/packages/site-market/config/gitlab/pipeline.yml'
+    rules:
+      - if: $CI_COMMIT_BRANCH =~ /^market/
+  - local: '/packages/site-landing/config/gitlab/pipeline.yml'
+    rules:
+      - if: $CI_COMMIT_BRANCH =~ /^landing/
+
+pipiline_silent:
+  stage: build
+  rules:
+    - when: never
+  script:
+    - echo 'Silent'

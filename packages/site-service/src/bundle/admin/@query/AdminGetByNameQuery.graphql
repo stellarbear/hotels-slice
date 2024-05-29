@@ -1,0 +1,7 @@
+#import "./AdminFragment.graphql"
+
+query AdminGetByNameQuery($input: InputName!) {
+    adminGetAdminsByName(input: $input) {
+        ...AAdminFragment
+    }
+}

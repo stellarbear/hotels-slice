@@ -1,0 +1,9 @@
+#import "./AdminFragment.graphql"
+
+mutation AdminDeactivateMutation($input: InputId!) {
+    adminDeactivate(input: $input) {
+        admin {        
+            ...AAdminFragment
+        }
+    }
+}

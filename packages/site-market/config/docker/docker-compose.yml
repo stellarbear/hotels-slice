@@ -1,0 +1,24 @@
+version: "3.7"
+
+services:
+  www-router:
+    image: ${IMAGE_ROUTER}
+    ports: ["127.0.0.1:${ROUTER_PORT}:80"]
+    depends_on:
+      - www-admin
+
+  www-admin:
+    image: ${IMAGE_UI}
+    command: "/www/admin"
+
+  www-seller:
+    image: ${IMAGE_UI}
+    command: "/www/seller"
+
+  www-buyer:
+    image: ${IMAGE_UI}
+    command: "/www/buyer"
+
+  www-landing:
+    image: ${IMAGE_UI}
+    command: "/www/landing"

@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -x
+command -v source || exit 1
+source bin/build-env
+
+cat ${!CI_COMMIT_REF_NAME} <(echo) ${!CI_EXTENDS} | \
+  xargs printf -- '--build-arg %s\n' | \
+  xargs docker build --rm -t "${IMAGE_UI}" \
+  --build-arg IMAGE_BASE="${IMAGE_BASE}" \
+  --build-arg BRANCH="${CI_COMMIT_REF_NAME}" \
+  -f "${PWD}/packages/${PROJECT_NAME}/config/docker/Dockerfile" .

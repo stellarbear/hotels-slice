@@ -1,0 +1,14 @@
+query TaskGetCurrentQuery {
+    executerGetTaskAtTheMoment {
+        id
+
+        manager {
+            hotel {
+                nameHotel
+            }
+        }
+        
+        duration
+        startAt
+    }
+}

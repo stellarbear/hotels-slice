@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+# set -x
+set -a
+command -v source || exit 1
+
+ARG_PROJECT=$1
+ARG_ENV=${2:-development}
+
+ENV_DIR="packages/site-${ARG_PROJECT}/env"
+source "${ENV_DIR}/.base"
+source "${ENV_DIR}/.${ARG_ENV}"
+
+DIR="packages/site-${ARG_PROJECT}/src"
+SCHEMA="$DIR/schema.graphql"
+BUNDLE="$DIR/bundle"
+
+export PROJECT_NAME="site-${ARG_PROJECT}"
+export SCHEMA="https://${HOST_GRAPHQL}/graphql/"
+
+for DIR in "$BUNDLE"/*/; do
+    echo "[$DIR]"
+
+    if [[ -z `find ${DIR} -type f -name *.graphql` ]]
+    then
+        echo "no files. skipping.."
+    else
+        export DIR="${DIR}"
+        yarn graphql-codegen --config=gql.yml
+    fi
+done
+
+    

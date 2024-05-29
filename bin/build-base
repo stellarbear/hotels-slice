@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -x
+command -v source || exit 1
+source bin/build-env
+
+echo ${PWD}
+
+docker build --rm -t "${IMAGE_NODE}" \
+  -f "${PWD}/config/docker/node/Dockerfile" .
+
+docker build --rm -t "${IMAGE_BASE}" \
+  --build-arg IMAGE_NODE="${IMAGE_NODE}" \
+  -f "${PWD}/config/docker/base/Dockerfile" .

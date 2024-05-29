@@ -1,0 +1,17 @@
+.idea/
+.home/
+node_modules/
+coverage/
+dist/
+db/
+yarn-*.log
+lerna-*.log
+npm-*.log
+.DS_Store
+tsconfig.tsbuildinfo
+.vscode
+
+.env*
+/cert
+schema.graphql
+meta.json

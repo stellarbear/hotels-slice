@@ -1,0 +1,6 @@
+PROJECT_NAME=-landing
+VERSION=current
+BRANCH=local
+
+MAP_YANDEX_KEY=
+MAP_2GIS_KEY=caafe

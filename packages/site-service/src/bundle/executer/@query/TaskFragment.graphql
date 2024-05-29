@@ -1,0 +1,38 @@
+fragment ETaskFragment on TaskType
+{
+    id
+    
+    profession {
+        name 
+        description
+    }
+    personalProfession {
+        name
+    }
+    executers {
+        id
+        status
+    }
+    manager {
+        hotel {
+            nameLegalEntity
+            nameHotel
+
+            coordinates {
+                address
+                latitude
+                longitude
+            }
+        }
+    }
+    
+    countExecuters
+    rent
+    startAt
+    duration
+    comment
+    
+    status
+    createdAt
+    updatedAt
+}

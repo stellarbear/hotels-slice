@@ -1,0 +1,13 @@
+{
+    "extends": "../../tsconfig.lib.jsx.json",
+    "compilerOptions": {
+        "rootDir": "src",
+        "outDir": "dist",
+        "typeRoots": [
+            "./node_modules/@yandex/ymaps3-types",
+        ]
+    },
+    "include": [
+        "src"
+    ]
+}

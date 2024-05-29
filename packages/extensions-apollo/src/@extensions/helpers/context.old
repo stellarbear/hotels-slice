@@ -1,0 +1,75 @@
+import {DocumentNode, useQuery} from "@apollo/client";
+import React from "react";
+
+type Handle = {
+    doc: DocumentNode;
+    variables?: Record<string, any>;
+};
+
+type Ref<T> = {current: T | null};
+
+export const Context = <F extends Handle, R>(fn: F) => {
+    const fnRef: Ref<F> = {current: null};
+    const defaultsRef: Ref<R> = {current: null};
+    const contextRef: Ref<Function> = {current: null};
+
+    return ({
+        query: (defaults?: R) => {
+            fnRef.current = fn;
+            defaultsRef.current = defaults ?? null;
+
+            // const argsRef = React.useRef(JSON.stringify(fn.variables));
+            // const argsNew = JSON.stringify(fn.variables);
+
+            // if (argsNew !== argsRef.current) {
+            //     argsRef.current = argsNew;
+            //     //  We need to rerender child component on variable change
+            //     // const consumers = Array.from(contextRef.current);
+            //     // consumers.forEach((consumer) => consumer(argsNew));
+            //     // contextRef.current?.(fn.variables);
+            // }
+
+            return fnRef.current as F;
+        },
+        use: () => {
+            const query = fnRef.current;
+            if (!query) {
+                throw new Error("outside of query context");
+            }
+
+            // const [_, setVariables] = React.useState<Record<string, any>>();
+            // contextRef.current = setVariables;
+
+            const {data, refetch, loading} = useQuery<R>(query.doc, {
+                //  loading requirement (if being refetched from another place)
+                notifyOnNetworkStatusChange: true,
+                variables: query.variables,
+                fetchPolicy: "cache-only",
+            });
+
+            // const [data, setData] = React.useState<R | null>(client.readQuery({
+            //     query: query.doc,
+            //     variables: query.variables,
+            // }) ?? defaultsRef.current);
+
+            // React.useEffect(() => {
+            //     const subscription = client.watchQuery({
+            //         query: query.doc,
+            //         variables: query.variables,
+            //     }).subscribe({
+            //         next: (e) => setData(e.data),
+            //     });
+
+            //     return () => subscription.unsubscribe();
+            // }, [JSON.stringify(query.variables), query.doc]);
+
+            const result = data ?? defaultsRef.current;
+            if (!result) {
+                throw new Error("outside of query context");
+            }
+
+            const refetchQuery = refetch;
+            return [result, {refetchQuery, loading}] as const;
+        },
+    });
+};

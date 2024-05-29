@@ -1,0 +1,23 @@
+{
+    "name": "@app/extensions-mock",
+    "version": "0.1.0",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist/"
+    ],
+    "description": "extensions: mock http requests",
+    "scripts": {
+        "build": "tsc",
+        "watch": "npm run build --watch",
+        "clean": "rimraf dist tsconfig.tsbuildinfo"
+    },
+    "dependencies": {
+        "react": "18.2.0"
+    },
+    "devDependencies": {
+        "miragejs": "0.1.47"
+    },
+    "private": true,
+    "sideEffects": false
+}

@@ -1,0 +1,3 @@
+certbot -i nginx --cert-name .com \
+ -d .com \
+ -d dev..com

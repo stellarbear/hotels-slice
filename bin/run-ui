@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+set -x
+set -a
+command -v source || exit 1
+
+ARG_COMMAND=$1
+ARG_PROJECT=$2
+ARG_ENV=${3:-development}
+
+ENV_DIR="packages/site-${ARG_PROJECT}/env"
+source "${ENV_DIR}/.base"
+source "${ENV_DIR}/.${ARG_ENV}"
+
+set +a
+yarn workspace "@app/site-${ARG_PROJECT}" "$ARG_COMMAND"

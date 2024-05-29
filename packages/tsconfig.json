@@ -1,0 +1,57 @@
+{
+    "files": [],
+    "include": [],
+    "references": [
+        {
+            "path": "./extensions-guard"
+        },
+        {
+            "path": "./extensions-utility"
+        },
+        {
+            "path": "./extensions-form"
+        },
+        {
+            "path": "./extensions-fp"
+        },
+        {
+            "path": "./extensions-sentry"
+        },
+        {
+            "path": "./extensions-classes"
+        },
+        {
+            "path": "./extensions-react"
+        },
+        {
+            "path": "./extensions-apollo"
+        },
+        {
+            "path": "./esbuild"
+        },
+        {
+            "path": "./ui-icons"
+        },
+        {
+            "path": "./ui-telemetry"
+        },
+        {
+            "path": "./ui-maps-yandex"
+        },
+        {
+            "path": "./ui-maps-2gis"
+        },
+        {
+            "path": "./ui-web-core"
+        },
+        {
+            "path": "./ui-web-kit"
+        },
+        {
+            "path": "./ui-web-controls"
+        },
+        {
+            "path": "./ui-web-markdown"
+        },
+    ]
+}

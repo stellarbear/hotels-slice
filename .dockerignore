@@ -1,0 +1,9 @@
+.idea/
+
+bin/
+dist/
+node_modules/
+tsconfig.tsbuildinfo
+
+/.*
+!.eslintrc

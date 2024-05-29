@@ -1,0 +1,88 @@
+{
+    "shared": {
+        "variables": {
+            "NODE_ENV": "development"
+        },
+        "environment": [
+            "HOST_FS",
+            "HOST_DOMAIN",
+            "HOST_GRAPHQL",
+            "SENTRY_KEY"
+        ]
+    },
+    "bundle": [
+        {
+            "platform": "browser",
+            "build": "dist/admin",
+            "base": "src/bundle/admin",
+            "entry": [
+                "index.html"
+            ],
+            "environment": [],
+            "serve": {
+                "host": "a.localhost",
+                "port": 8020
+            }
+        },
+        {
+            "platform": "browser",
+            "build": "dist/landing",
+            "base": "src/bundle/landing",
+            "entry": [
+                "index.html"
+            ],
+            "environment": [
+                "BRANCH",
+                "VERSION",
+                "BUILT_TIME"
+            ],
+            "serve": {
+                "host": "localhost",
+                "port": 8020
+            }
+        },
+        {
+            "platform": "browser",
+            "build": "dist/manager",
+            "base": "src/bundle/manager",
+            "entry": [
+                "index.html"
+            ],
+            "environment": [
+                "MAP_YANDEX_KEY",
+                "YM_COUNTER",
+                "DADATA_KEY",
+                "OPEN_REPLAY_KEY",
+                "MANAGER_CHAT_ID"
+            ],
+            "serve": {
+                "host": "m.localhost",
+                "port": 8020
+            }
+        },
+        {
+            "platform": "browser",
+            "build": "dist/executer",
+            "base": "src/bundle/executer",
+            "entry": [
+                "index.html"
+            ],
+            "environment": [
+                "MAP_YANDEX_KEY",
+                "MAP_2GIS_KEY",
+                "YM_COUNTER",
+                "DADATA_KEY",
+                "OPEN_REPLAY_KEY",
+                "EXECUTER_CHAT_ID",
+                "SBER_BUSINESS_PARTNER_ID",
+                "SBER_BUSINESS_PARTNER_REF",
+                "CARD_REFERRAL_RU",
+                "CARD_REFERRAL_NON_RU"
+            ],
+            "serve": {
+                "host": "e.localhost",
+                "port": 8020
+            }
+        }
+    ]
+}

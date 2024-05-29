@@ -1,0 +1,8 @@
+query AuthValidateTokenQuery($input: InputForValidateToken!) {
+    validateToken(input: $input) {
+        type
+        meta {
+            permissions
+        }
+    }
+}

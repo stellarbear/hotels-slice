@@ -1,0 +1,27 @@
+version: "3.7"
+
+services:
+  www-router:
+    image: ${IMAGE_ROUTER}
+    ports: ["127.0.0.1:${ROUTER_PORT}:80"]
+    depends_on:
+      - www-landing
+      - www-executer
+      - www-manager
+      - www-admin
+
+  www-executer:
+    image: ${IMAGE_UI}
+    command: "/www/executer"
+
+  www-manager:
+    image: ${IMAGE_UI}
+    command: "/www/manager"
+
+  www-admin:
+    image: ${IMAGE_UI}
+    command: "/www/admin"
+
+  www-landing:
+    image: ${IMAGE_UI}
+    command: "/www/landing"

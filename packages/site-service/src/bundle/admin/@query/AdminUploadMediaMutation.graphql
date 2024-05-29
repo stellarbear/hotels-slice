@@ -1,0 +1,6 @@
+mutation AdminUploadMediaMutation($input: InputTypeMedia!) {
+    adminUploadMedia(input: $input) {
+        path
+        url
+    }
+}

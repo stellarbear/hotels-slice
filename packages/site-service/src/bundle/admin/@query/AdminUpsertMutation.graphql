@@ -1,0 +1,9 @@
+#import "./AdminFragment.graphql"
+
+mutation AdminUpsertMutation($input: InputForUpsertAdmin!) {
+    adminUpsertAdmin(input: $input) {
+        admin {        
+            ...AAdminFragment
+        }
+    }
+}

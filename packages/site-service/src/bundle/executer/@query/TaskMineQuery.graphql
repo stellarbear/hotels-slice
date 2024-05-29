@@ -1,0 +1,6 @@
+query TaskMineQuery($input: DateTime!) {
+    executerGetIdAndDateAllExecuterStatesByMonth(input: $input) {
+        id
+        startAt
+    }
+}

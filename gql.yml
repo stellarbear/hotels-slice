@@ -1,0 +1,12 @@
+schema: "${SCHEMA}"
+documents: "${DIR}**/*.graphql"
+config:
+  enumsAsTypes: true
+  dedupeOperationSuffix: true
+generates:
+  "${DIR}interfaces.ts":
+    plugins:
+      - add:
+          content: '// @ts-nocheck'
+      - typescript
+      - typescript-operations

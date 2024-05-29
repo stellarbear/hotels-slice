@@ -1,0 +1,67 @@
+variables:
+  PROJECT: site
+  VERSION: ${CI_PIPELINE_ID}
+  REGISTRY_IMAGE: ${CI_REGISTRY_IMAGE}/${CI_COMMIT_REF_NAME}
+  IMAGE_BASE: ${REGISTRY_IMAGE}-base:${CI_PIPELINE_ID}
+  IMAGE_ROUTER: ${REGISTRY_IMAGE}-router:${CI_PIPELINE_ID}
+  IMAGE_UI: ${REGISTRY_IMAGE}-ui:${CI_PIPELINE_ID}
+  DEPLOY_ID: site-${CI_COMMIT_REF_SLUG}
+
+stages:
+  - base
+  - build
+  - registry
+  - deploy
+
+default:
+  interruptible: true
+
+.docker:login:
+  before_script:
+    - docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}
+
+docker:
+  stage: base
+  tags:
+    - market
+  script: bin/build-base
+  rules:
+    - if: '$CI_COMMIT_BRANCH =~ /\_/'
+
+.build:
+  stage: build
+  tags:
+    - market
+  extends: 
+    - .docker:login
+  needs:
+    - docker
+
+build:app:
+  extends: .build
+  script: bin/build-app
+
+build:ui:
+  extends: .build
+  script: bin/build-ui
+
+registry:
+  stage: registry
+  tags:
+    - market
+  extends: 
+    - .docker:login
+  needs:
+    - build:app
+    - build:ui
+  script: bin/build-push
+
+deploy:
+  stage: deploy
+  tags:
+    - market
+  extends: 
+    - .docker:login
+  needs:
+    - registry
+  script: bin/build-deploy

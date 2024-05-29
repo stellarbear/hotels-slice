@@ -1,0 +1,157 @@
+server {
+        server_name .ru;
+
+        location / {
+                proxy_pass http://localhost:9010;
+                proxy_http_version 1.1;
+                proxy_set_header Host www-landing;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection 'upgrade';
+                proxy_cache_bypass $http_upgrade;
+        }
+}
+server {
+        server_name a..ru;
+
+        location / {
+                proxy_pass http://localhost:9010;
+                proxy_http_version 1.1;
+                proxy_set_header Host www-admin;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection 'upgrade';
+                proxy_cache_bypass $http_upgrade;
+        }
+}
+server {
+        server_name s..ru;
+
+        location / {
+                proxy_pass http://localhost:9010;
+                proxy_http_version 1.1;
+                proxy_set_header Host www-seller;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection 'upgrade';
+                proxy_cache_bypass $http_upgrade;
+        }
+}
+server {
+        server_name b..ru;
+
+        location / {
+                proxy_pass http://localhost:9010;
+                proxy_http_version 1.1;
+                proxy_set_header Host www-buyer;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection 'upgrade';
+                proxy_cache_bypass $http_upgrade;
+        }
+}
+
+
+
+server {
+        server_name dev..ru;
+
+        location / {
+                proxy_pass http://localhost:9020;
+                proxy_http_version 1.1;
+                proxy_set_header Host www-landing;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection 'upgrade';
+                proxy_cache_bypass $http_upgrade;
+        }
+}
+server {
+        server_name a.dev..ru;
+
+        location / {
+                proxy_pass http://localhost:9020;
+                proxy_http_version 1.1;
+                proxy_set_header Host www-admin;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection 'upgrade';
+                proxy_cache_bypass $http_upgrade;
+        }
+}
+server {
+        server_name s.dev..ru;
+
+        location / {
+                proxy_pass http://localhost:9020;
+                proxy_http_version 1.1;
+                proxy_set_header Host www-seller;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection 'upgrade';
+                proxy_cache_bypass $http_upgrade;
+        }
+}
+server {
+        server_name b.dev..ru;
+
+        location / {
+                proxy_pass http://localhost:9020;
+                proxy_http_version 1.1;
+                proxy_set_header Host www-buyer;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection 'upgrade';
+                proxy_cache_bypass $http_upgrade;
+        }
+}
+
+
+
+server {
+        server_name stage..ru;
+
+        location / {
+                proxy_pass http://localhost:9015;
+                proxy_http_version 1.1;
+                proxy_set_header Host www-landing;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection 'upgrade';
+                proxy_cache_bypass $http_upgrade;
+        }
+}
+server {
+        server_name a.stage..ru;
+
+        location / {
+                proxy_pass http://localhost:9015;
+                proxy_http_version 1.1;
+                proxy_set_header Host www-admin;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection 'upgrade';
+                proxy_cache_bypass $http_upgrade;
+        }
+}
+server {
+        server_name s.stage..ru;
+
+        location / {
+                proxy_pass http://localhost:9015;
+                proxy_http_version 1.1;
+                proxy_set_header Host www-seller;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection 'upgrade';
+                proxy_cache_bypass $http_upgrade;
+        }
+}
+server {
+        server_name b.stage..ru;
+
+        location / {
+                proxy_pass http://localhost:9015;
+                proxy_http_version 1.1;
+                proxy_set_header Host www-buyer;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection 'upgrade';
+                proxy_cache_bypass $http_upgrade;
+        }
+}
+
+
+server {
+    listen 80;
+    server_name *..ru;
+    return 301 https://.ru$request_uri;
+}

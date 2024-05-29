@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "ES2019",
+        "strict": true,
+        "sourceMap": true,
+        "skipLibCheck": false,
+        "esModuleInterop": true,
+        "strictNullChecks": true,
+        "forceConsistentCasingInFileNames": true,
+        "noImplicitThis": true,
+        "noImplicitAny": true,
+        "strictPropertyInitialization": true,
+        "strictFunctionTypes": true,
+        "experimentalDecorators": true,
+        "incremental": false,
+        "jsx": "react"
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}

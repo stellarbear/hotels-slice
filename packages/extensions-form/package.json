@@ -1,0 +1,28 @@
+{
+    "name": "@app/extensions-form",
+    "version": "0.1.0",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist/"
+    ],
+    "description": "extensions: react-hook-form",
+    "scripts": {
+        "clean": "yarn build:clean",
+        "watch": "yarn build:watch",
+        "build": "yarn build:clean && tsc",
+        "build:clean": "rimraf dist tsconfig.tsbuildinfo",
+        "build:watch": "yarn build --watch"
+    },
+    "private": true,
+    "sideEffects": false,
+    "license": "MIT",
+    "dependencies": {
+        "phone": "^3.1.25",
+        "react": "^18.2.0",
+        "react-hook-form": "7.48.2"
+    },
+    "devDependencies": {
+        "@types/react": "^18.0.17"
+    }
+}
